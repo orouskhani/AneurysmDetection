@@ -1,0 +1,552 @@
+2022-09-05 06:39:10.505 | INFO     | scripts.train:_train:212 - Log file at /opt/models/Task019FG_ADAM/RetinaUNetV001_D3V001_3d/fold0/train.log
+2022-09-05 06:39:10.506 | ERROR    | nndet.utils.info:log_git:219 - Was not able to read git information, trying to continue without.
+2022-09-05 06:39:11.270 | INFO     | nndet.io.datamodule.base:do_split:89 - Using splits /opt/data/Task019FG_ADAM/preprocessed/splits_final.pkl with fold 0
+2022-09-05 06:39:11.273 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:362 - Architecture overwrites: {} Anchor overwrites: {}
+2022-09-05 06:39:11.273 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:364 - Building architecture according to plan of RetinaUNetV001
+2022-09-05 06:39:11.273 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:367 - Start channels: 32; head channels: 128; fpn channels: 128
+2022-09-05 06:39:11.273 | INFO     | nndet.core.boxes.anchors:__init__:529 - Discarding anchor generator kwargs {'stride': 1}
+2022-09-05 06:39:11.273 | INFO     | nndet.ptmodule.retinaunet.base:_build_encoder:464 - Building:: encoder Encoder: {} 
+2022-09-05 06:39:11.397 | INFO     | nndet.ptmodule.retinaunet.base:_build_decoder:496 - Building:: decoder UFPNModular: {'min_out_channels': 8, 'upsampling_mode': 'transpose', 'num_lateral': 1, 'norm_lateral': False, 'activation_lateral': False, 'num_out': 1, 'norm_out': False, 'activation_out': False}
+2022-09-05 06:39:11.415 | INFO     | nndet.core.boxes.matcher:__init__:253 - Running ATSS Matching with num_candidates=4 and center_in_gt False.
+2022-09-05 06:39:11.415 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_classifier:530 - Building:: classifier BCECLassifier: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'mean', 'loss_weight': 1.0, 'prior_prob': 0.01}
+2022-09-05 06:39:11.421 | INFO     | nndet.arch.heads.classifier:init_weights:215 - Init classifier weights: prior prob 0.01
+2022-09-05 06:39:11.439 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_regressor:564 - Building:: regressor GIoURegressor: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'sum', 'loss_weight': 1.0, 'learn_scale': True}
+2022-09-05 06:39:11.454 | INFO     | nndet.arch.heads.regressor:build_scales:150 - Learning level specific scalar in regressor
+2022-09-05 06:39:11.455 | INFO     | nndet.arch.heads.regressor:init_weights:196 - Overwriting regressor conv weight init
+2022-09-05 06:39:11.475 | INFO     | nndet.ptmodule.retinaunet.base:_build_head:602 - Building:: head DetectionHeadHNMNative: {} sampler HardNegativeSamplerBatched: {'batch_size_per_image': 32, 'positive_fraction': 0.33, 'pool_size': 20, 'min_neg': 1}
+2022-09-05 06:39:11.475 | INFO     | nndet.core.boxes.sampler:__init__:235 - Sampling hard negatives on a per batch basis
+2022-09-05 06:39:11.475 | INFO     | nndet.ptmodule.retinaunet.base:_build_segmenter:638 - Building:: segmenter DiCESegmenterFgBg {'dice_kwargs': {'batch_dice': True}}
+2022-09-05 06:39:11.476 | INFO     | nndet.losses.segmentation:__init__:108 - Running batch dice True and do bg False in dice loss.
+2022-09-05 06:39:11.476 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:421 - Model Inference Summary: 
+detections_per_img: 100 
+score_thresh: 0 
+topk_candidates: 10000 
+remove_small_boxes: 0.01 
+nms_thresh: 0.6
+2022-09-05 06:39:11.476 | WARNING  | nndet.utils.info:wrapper:97 - This feature (FROCMetric.__init__) is experimental! It might not implement all features or is only a simplification!
+2022-09-05 06:39:11.556 | INFO     | scripts.train:_train:265 - Using 1 GPUs for training
+2022-09-05 06:39:11.556 | INFO     | scripts.train:_train:267 - Using None plugins for training
+2022-09-05 06:39:11.591 | INFO     | nndet.training.swa:__init__:64 - Initialize SWA with swa epoch start 49
+2022-09-05 06:39:11.671 | INFO     | nndet.io.datamodule.bg_module:setup:171 - Using dummy 2d augmentation params
+2022-09-05 06:39:11.671 | INFO     | nndet.io.augmentation.bg_aug:__init__:70 - Running dummy 2d augmentation transforms!
+2022-09-05 06:39:11.672 | INFO     | nndet.io.datamodule.bg_module:setup:190 - Augmentation: BaseMoreAug transforms and base_more params 
+2022-09-05 06:39:11.672 | INFO     | nndet.io.datamodule.bg_module:setup:192 - Loading network patch size [ 48 224 224] and generator patch size [48, 320, 320]
+2022-09-05 06:39:14.896 | INFO     | nndet.ptmodule.retinaunet.base:configure_optimizers:304 - Running: initial_lr 0.01 weight_decay 3e-05 SGD with momentum 0.9 and nesterov True
+2022-09-05 06:39:17.917 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:238 - Using validation DataLoader3DOffset with {}
+2022-09-05 06:39:17.919 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 06:39:17.922 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 06:39:17.922 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:262 - VALIDATION KEYS:
+ odict_keys(['10012', '10019', '10027', '10029', '10040', '10048B', '10049B', '10049F', '10054B', '10054F', '10056B', '10056F', '10068B', '10068F', '10069B', '10078B', '10078F'])
+2022-09-05 06:39:31.139 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 2.87894
+2022-09-05 06:39:31.183 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.000  AP@0.1: 0.000  AP@0.5: 0.000
+2022-09-05 06:39:31.184 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.008
+2022-09-05 06:39:31.204 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 13 s
+2022-09-05 06:39:31.209 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:203 - Using training DataLoader3DOffset with {}
+2022-09-05 06:39:31.211 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 06:39:31.220 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 06:39:31.221 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:227 - TRAINING KEYS:
+ odict_keys(['10016', '10018', '10023', '10025', '10026', '10028', '10030', '10031', '10032', '10033', '10034', '10035', '10036', '10037', '10038', '10039', '10041', '10042', '10043', '10044B', '10044F', '10045B', '10045F', '10046B', '10046F', '10050B', '10050F', '10051B', '10051F', '10052B', '10052F', '10053B', '10053F', '10055B', '10055F', '10057B', '10057F', '10058B', '10058F', '10059B', '10059F', '10060B', '10060F', '10061B', '10061F', '10062B', '10062F', '10063B', '10063F', '10064B', '10064F', '10066B', '10066F', '10070F', '10071B', '10072F', '10073B', '10073F', '10074B', '10074F', '10075F', '10076B', '10076F', '10077B'])
+2022-09-05 06:42:03.452 | INFO     | scripts.train:_train:212 - Log file at /opt/models/Task019FG_ADAM/RetinaUNetV001_D3V001_3d/fold0/train.log
+2022-09-05 06:42:03.452 | ERROR    | nndet.utils.info:log_git:219 - Was not able to read git information, trying to continue without.
+2022-09-05 06:42:04.013 | INFO     | nndet.io.datamodule.base:do_split:89 - Using splits /opt/data/Task019FG_ADAM/preprocessed/splits_final.pkl with fold 0
+2022-09-05 06:42:04.015 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:362 - Architecture overwrites: {} Anchor overwrites: {}
+2022-09-05 06:42:04.015 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:364 - Building architecture according to plan of RetinaUNetV001
+2022-09-05 06:42:04.015 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:367 - Start channels: 32; head channels: 128; fpn channels: 128
+2022-09-05 06:42:04.015 | INFO     | nndet.core.boxes.anchors:__init__:529 - Discarding anchor generator kwargs {'stride': 1}
+2022-09-05 06:42:04.015 | INFO     | nndet.ptmodule.retinaunet.base:_build_encoder:464 - Building:: encoder Encoder: {} 
+2022-09-05 06:42:04.089 | INFO     | nndet.ptmodule.retinaunet.base:_build_decoder:496 - Building:: decoder UFPNModular: {'min_out_channels': 8, 'upsampling_mode': 'transpose', 'num_lateral': 1, 'norm_lateral': False, 'activation_lateral': False, 'num_out': 1, 'norm_out': False, 'activation_out': False}
+2022-09-05 06:42:04.103 | INFO     | nndet.core.boxes.matcher:__init__:253 - Running ATSS Matching with num_candidates=4 and center_in_gt False.
+2022-09-05 06:42:04.104 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_classifier:530 - Building:: classifier BCECLassifier: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'mean', 'loss_weight': 1.0, 'prior_prob': 0.01}
+2022-09-05 06:42:04.111 | INFO     | nndet.arch.heads.classifier:init_weights:215 - Init classifier weights: prior prob 0.01
+2022-09-05 06:42:04.116 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_regressor:564 - Building:: regressor GIoURegressor: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'sum', 'loss_weight': 1.0, 'learn_scale': True}
+2022-09-05 06:42:04.124 | INFO     | nndet.arch.heads.regressor:build_scales:150 - Learning level specific scalar in regressor
+2022-09-05 06:42:04.124 | INFO     | nndet.arch.heads.regressor:init_weights:196 - Overwriting regressor conv weight init
+2022-09-05 06:42:04.132 | INFO     | nndet.ptmodule.retinaunet.base:_build_head:602 - Building:: head DetectionHeadHNMNative: {} sampler HardNegativeSamplerBatched: {'batch_size_per_image': 32, 'positive_fraction': 0.33, 'pool_size': 20, 'min_neg': 1}
+2022-09-05 06:42:04.132 | INFO     | nndet.core.boxes.sampler:__init__:235 - Sampling hard negatives on a per batch basis
+2022-09-05 06:42:04.132 | INFO     | nndet.ptmodule.retinaunet.base:_build_segmenter:638 - Building:: segmenter DiCESegmenterFgBg {'dice_kwargs': {'batch_dice': True}}
+2022-09-05 06:42:04.133 | INFO     | nndet.losses.segmentation:__init__:108 - Running batch dice True and do bg False in dice loss.
+2022-09-05 06:42:04.133 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:421 - Model Inference Summary: 
+detections_per_img: 100 
+score_thresh: 0 
+topk_candidates: 10000 
+remove_small_boxes: 0.01 
+nms_thresh: 0.6
+2022-09-05 06:42:04.133 | WARNING  | nndet.utils.info:wrapper:97 - This feature (FROCMetric.__init__) is experimental! It might not implement all features or is only a simplification!
+2022-09-05 06:42:04.183 | INFO     | scripts.train:_train:265 - Using 1 GPUs for training
+2022-09-05 06:42:04.183 | INFO     | scripts.train:_train:267 - Using None plugins for training
+2022-09-05 06:42:04.255 | INFO     | nndet.training.swa:__init__:64 - Initialize SWA with swa epoch start 49
+2022-09-05 06:42:04.306 | INFO     | nndet.io.datamodule.bg_module:setup:171 - Using dummy 2d augmentation params
+2022-09-05 06:42:04.307 | INFO     | nndet.io.augmentation.bg_aug:__init__:70 - Running dummy 2d augmentation transforms!
+2022-09-05 06:42:04.307 | INFO     | nndet.io.datamodule.bg_module:setup:190 - Augmentation: BaseMoreAug transforms and base_more params 
+2022-09-05 06:42:04.307 | INFO     | nndet.io.datamodule.bg_module:setup:192 - Loading network patch size [ 48 224 224] and generator patch size [48, 320, 320]
+2022-09-05 06:42:05.631 | INFO     | nndet.ptmodule.retinaunet.base:configure_optimizers:304 - Running: initial_lr 0.01 weight_decay 3e-05 SGD with momentum 0.9 and nesterov True
+2022-09-05 06:42:06.998 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:238 - Using validation DataLoader3DOffset with {}
+2022-09-05 06:42:06.999 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 06:42:07.001 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 06:42:07.001 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:262 - VALIDATION KEYS:
+ odict_keys(['10012', '10019', '10027', '10029', '10040', '10048B', '10049B', '10049F', '10054B', '10054F', '10056B', '10056F', '10068B', '10068F', '10069B', '10078B', '10078F'])
+2022-09-05 06:42:14.013 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 2.84134
+2022-09-05 06:42:14.030 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.000  AP@0.1: 0.000  AP@0.5: 0.000
+2022-09-05 06:42:14.030 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.015
+2022-09-05 06:42:14.035 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 7 s
+2022-09-05 06:42:14.038 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:203 - Using training DataLoader3DOffset with {}
+2022-09-05 06:42:14.039 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 06:42:14.042 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 06:42:14.043 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:227 - TRAINING KEYS:
+ odict_keys(['10016', '10018', '10023', '10025', '10026', '10028', '10030', '10031', '10032', '10033', '10034', '10035', '10036', '10037', '10038', '10039', '10041', '10042', '10043', '10044B', '10044F', '10045B', '10045F', '10046B', '10046F', '10050B', '10050F', '10051B', '10051F', '10052B', '10052F', '10053B', '10053F', '10055B', '10055F', '10057B', '10057F', '10058B', '10058F', '10059B', '10059F', '10060B', '10060F', '10061B', '10061F', '10062B', '10062F', '10063B', '10063F', '10064B', '10064F', '10066B', '10066F', '10070F', '10071B', '10072F', '10073B', '10073F', '10074B', '10074F', '10075F', '10076B', '10076F', '10077B'])
+2022-09-05 06:46:48.406 | INFO     | scripts.train:_train:212 - Log file at /opt/models/Task019FG_ADAM/RetinaUNetV001_D3V001_3d/fold0/train.log
+2022-09-05 06:46:48.406 | ERROR    | nndet.utils.info:log_git:219 - Was not able to read git information, trying to continue without.
+2022-09-05 06:46:48.933 | INFO     | nndet.io.datamodule.base:do_split:89 - Using splits /opt/data/Task019FG_ADAM/preprocessed/splits_final.pkl with fold 0
+2022-09-05 06:46:48.934 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:362 - Architecture overwrites: {} Anchor overwrites: {}
+2022-09-05 06:46:48.935 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:364 - Building architecture according to plan of RetinaUNetV001
+2022-09-05 06:46:48.935 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:367 - Start channels: 32; head channels: 128; fpn channels: 128
+2022-09-05 06:46:48.935 | INFO     | nndet.core.boxes.anchors:__init__:529 - Discarding anchor generator kwargs {'stride': 1}
+2022-09-05 06:46:48.935 | INFO     | nndet.ptmodule.retinaunet.base:_build_encoder:464 - Building:: encoder Encoder: {} 
+2022-09-05 06:46:49.010 | INFO     | nndet.ptmodule.retinaunet.base:_build_decoder:496 - Building:: decoder UFPNModular: {'min_out_channels': 8, 'upsampling_mode': 'transpose', 'num_lateral': 1, 'norm_lateral': False, 'activation_lateral': False, 'num_out': 1, 'norm_out': False, 'activation_out': False}
+2022-09-05 06:46:49.025 | INFO     | nndet.core.boxes.matcher:__init__:253 - Running ATSS Matching with num_candidates=4 and center_in_gt False.
+2022-09-05 06:46:49.025 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_classifier:530 - Building:: classifier BCECLassifier: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'mean', 'loss_weight': 1.0, 'prior_prob': 0.01}
+2022-09-05 06:46:49.030 | INFO     | nndet.arch.heads.classifier:init_weights:215 - Init classifier weights: prior prob 0.01
+2022-09-05 06:46:49.035 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_regressor:564 - Building:: regressor GIoURegressor: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'sum', 'loss_weight': 1.0, 'learn_scale': True}
+2022-09-05 06:46:49.044 | INFO     | nndet.arch.heads.regressor:build_scales:150 - Learning level specific scalar in regressor
+2022-09-05 06:46:49.044 | INFO     | nndet.arch.heads.regressor:init_weights:196 - Overwriting regressor conv weight init
+2022-09-05 06:46:49.051 | INFO     | nndet.ptmodule.retinaunet.base:_build_head:602 - Building:: head DetectionHeadHNMNative: {} sampler HardNegativeSamplerBatched: {'batch_size_per_image': 32, 'positive_fraction': 0.33, 'pool_size': 20, 'min_neg': 1}
+2022-09-05 06:46:49.051 | INFO     | nndet.core.boxes.sampler:__init__:235 - Sampling hard negatives on a per batch basis
+2022-09-05 06:46:49.051 | INFO     | nndet.ptmodule.retinaunet.base:_build_segmenter:638 - Building:: segmenter DiCESegmenterFgBg {'dice_kwargs': {'batch_dice': True}}
+2022-09-05 06:46:49.052 | INFO     | nndet.losses.segmentation:__init__:108 - Running batch dice True and do bg False in dice loss.
+2022-09-05 06:46:49.052 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:421 - Model Inference Summary: 
+detections_per_img: 100 
+score_thresh: 0 
+topk_candidates: 10000 
+remove_small_boxes: 0.01 
+nms_thresh: 0.6
+2022-09-05 06:46:49.052 | WARNING  | nndet.utils.info:wrapper:97 - This feature (FROCMetric.__init__) is experimental! It might not implement all features or is only a simplification!
+2022-09-05 06:46:49.104 | INFO     | scripts.train:_train:265 - Using 1 GPUs for training
+2022-09-05 06:46:49.104 | INFO     | scripts.train:_train:267 - Using None plugins for training
+2022-09-05 06:46:49.170 | INFO     | nndet.training.swa:__init__:64 - Initialize SWA with swa epoch start 49
+2022-09-05 06:46:49.222 | INFO     | nndet.io.datamodule.bg_module:setup:171 - Using dummy 2d augmentation params
+2022-09-05 06:46:49.222 | INFO     | nndet.io.augmentation.bg_aug:__init__:70 - Running dummy 2d augmentation transforms!
+2022-09-05 06:46:49.222 | INFO     | nndet.io.datamodule.bg_module:setup:190 - Augmentation: BaseMoreAug transforms and base_more params 
+2022-09-05 06:46:49.222 | INFO     | nndet.io.datamodule.bg_module:setup:192 - Loading network patch size [ 48 224 224] and generator patch size [48, 320, 320]
+2022-09-05 06:46:50.502 | INFO     | nndet.ptmodule.retinaunet.base:configure_optimizers:304 - Running: initial_lr 0.01 weight_decay 3e-05 SGD with momentum 0.9 and nesterov True
+2022-09-05 06:46:51.886 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:238 - Using validation DataLoader3DOffset with {}
+2022-09-05 06:46:51.887 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 06:46:51.889 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 06:46:51.889 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:262 - VALIDATION KEYS:
+ odict_keys(['10012', '10019', '10027', '10029', '10040', '10048B', '10049B', '10049F', '10054B', '10054F', '10056B', '10056F', '10068B', '10068F', '10069B', '10078B', '10078F'])
+2022-09-05 06:46:59.016 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 3.06072
+2022-09-05 06:46:59.033 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.000  AP@0.1: 0.000  AP@0.5: 0.000
+2022-09-05 06:46:59.033 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.013
+2022-09-05 06:46:59.038 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 7 s
+2022-09-05 06:46:59.041 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:203 - Using training DataLoader3DOffset with {}
+2022-09-05 06:46:59.043 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 06:46:59.045 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 06:46:59.046 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:227 - TRAINING KEYS:
+ odict_keys(['10016', '10018', '10023', '10025', '10026', '10028', '10030', '10031', '10032', '10033', '10034', '10035', '10036', '10037', '10038', '10039', '10041', '10042', '10043', '10044B', '10044F', '10045B', '10045F', '10046B', '10046F', '10050B', '10050F', '10051B', '10051F', '10052B', '10052F', '10053B', '10053F', '10055B', '10055F', '10057B', '10057F', '10058B', '10058F', '10059B', '10059F', '10060B', '10060F', '10061B', '10061F', '10062B', '10062F', '10063B', '10063F', '10064B', '10064F', '10066B', '10066F', '10070F', '10071B', '10072F', '10073B', '10073F', '10074B', '10074F', '10075F', '10076B', '10076F', '10077B'])
+2022-09-05 06:48:56.769 | INFO     | scripts.train:_train:212 - Log file at /opt/models/Task019FG_ADAM/RetinaUNetV001_D3V001_3d/fold0/train.log
+2022-09-05 06:48:56.770 | ERROR    | nndet.utils.info:log_git:219 - Was not able to read git information, trying to continue without.
+2022-09-05 06:48:57.273 | INFO     | nndet.io.datamodule.base:do_split:89 - Using splits /opt/data/Task019FG_ADAM/preprocessed/splits_final.pkl with fold 0
+2022-09-05 06:48:57.274 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:362 - Architecture overwrites: {} Anchor overwrites: {}
+2022-09-05 06:48:57.274 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:364 - Building architecture according to plan of RetinaUNetV001
+2022-09-05 06:48:57.274 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:367 - Start channels: 32; head channels: 128; fpn channels: 128
+2022-09-05 06:48:57.274 | INFO     | nndet.core.boxes.anchors:__init__:529 - Discarding anchor generator kwargs {'stride': 1}
+2022-09-05 06:48:57.274 | INFO     | nndet.ptmodule.retinaunet.base:_build_encoder:464 - Building:: encoder Encoder: {} 
+2022-09-05 06:48:57.350 | INFO     | nndet.ptmodule.retinaunet.base:_build_decoder:496 - Building:: decoder UFPNModular: {'min_out_channels': 8, 'upsampling_mode': 'transpose', 'num_lateral': 1, 'norm_lateral': False, 'activation_lateral': False, 'num_out': 1, 'norm_out': False, 'activation_out': False}
+2022-09-05 06:48:57.364 | INFO     | nndet.core.boxes.matcher:__init__:253 - Running ATSS Matching with num_candidates=4 and center_in_gt False.
+2022-09-05 06:48:57.365 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_classifier:530 - Building:: classifier BCECLassifier: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'mean', 'loss_weight': 1.0, 'prior_prob': 0.01}
+2022-09-05 06:48:57.370 | INFO     | nndet.arch.heads.classifier:init_weights:215 - Init classifier weights: prior prob 0.01
+2022-09-05 06:48:57.376 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_regressor:564 - Building:: regressor GIoURegressor: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'sum', 'loss_weight': 1.0, 'learn_scale': True}
+2022-09-05 06:48:57.384 | INFO     | nndet.arch.heads.regressor:build_scales:150 - Learning level specific scalar in regressor
+2022-09-05 06:48:57.384 | INFO     | nndet.arch.heads.regressor:init_weights:196 - Overwriting regressor conv weight init
+2022-09-05 06:48:57.391 | INFO     | nndet.ptmodule.retinaunet.base:_build_head:602 - Building:: head DetectionHeadHNMNative: {} sampler HardNegativeSamplerBatched: {'batch_size_per_image': 32, 'positive_fraction': 0.33, 'pool_size': 20, 'min_neg': 1}
+2022-09-05 06:48:57.391 | INFO     | nndet.core.boxes.sampler:__init__:235 - Sampling hard negatives on a per batch basis
+2022-09-05 06:48:57.391 | INFO     | nndet.ptmodule.retinaunet.base:_build_segmenter:638 - Building:: segmenter DiCESegmenterFgBg {'dice_kwargs': {'batch_dice': True}}
+2022-09-05 06:48:57.392 | INFO     | nndet.losses.segmentation:__init__:108 - Running batch dice True and do bg False in dice loss.
+2022-09-05 06:48:57.392 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:421 - Model Inference Summary: 
+detections_per_img: 100 
+score_thresh: 0 
+topk_candidates: 10000 
+remove_small_boxes: 0.01 
+nms_thresh: 0.6
+2022-09-05 06:48:57.392 | WARNING  | nndet.utils.info:wrapper:97 - This feature (FROCMetric.__init__) is experimental! It might not implement all features or is only a simplification!
+2022-09-05 06:48:57.442 | INFO     | scripts.train:_train:265 - Using 1 GPUs for training
+2022-09-05 06:48:57.442 | INFO     | scripts.train:_train:267 - Using None plugins for training
+2022-09-05 06:48:57.509 | INFO     | nndet.training.swa:__init__:64 - Initialize SWA with swa epoch start 4
+2022-09-05 06:48:57.561 | INFO     | nndet.io.datamodule.bg_module:setup:171 - Using dummy 2d augmentation params
+2022-09-05 06:48:57.561 | INFO     | nndet.io.augmentation.bg_aug:__init__:70 - Running dummy 2d augmentation transforms!
+2022-09-05 06:48:57.561 | INFO     | nndet.io.datamodule.bg_module:setup:190 - Augmentation: BaseMoreAug transforms and base_more params 
+2022-09-05 06:48:57.562 | INFO     | nndet.io.datamodule.bg_module:setup:192 - Loading network patch size [ 48 224 224] and generator patch size [48, 320, 320]
+2022-09-05 06:48:58.864 | INFO     | nndet.ptmodule.retinaunet.base:configure_optimizers:304 - Running: initial_lr 0.01 weight_decay 3e-05 SGD with momentum 0.9 and nesterov True
+2022-09-05 06:49:00.242 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:238 - Using validation DataLoader3DOffset with {}
+2022-09-05 06:49:00.245 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 06:49:00.248 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 06:49:00.249 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:262 - VALIDATION KEYS:
+ odict_keys(['10012', '10019', '10027', '10029', '10040', '10048B', '10049B', '10049F', '10054B', '10054F', '10056B', '10056F', '10068B', '10068F', '10069B', '10078B', '10078F'])
+2022-09-05 06:49:07.236 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 2.91807
+2022-09-05 06:49:07.253 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.001  AP@0.1: 0.004  AP@0.5: 0.000
+2022-09-05 06:49:07.253 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.024
+2022-09-05 06:49:07.258 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 7 s
+2022-09-05 06:49:07.261 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:203 - Using training DataLoader3DOffset with {}
+2022-09-05 06:49:07.263 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 06:49:07.265 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 06:49:07.266 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:227 - TRAINING KEYS:
+ odict_keys(['10016', '10018', '10023', '10025', '10026', '10028', '10030', '10031', '10032', '10033', '10034', '10035', '10036', '10037', '10038', '10039', '10041', '10042', '10043', '10044B', '10044F', '10045B', '10045F', '10046B', '10046F', '10050B', '10050F', '10051B', '10051F', '10052B', '10052F', '10053B', '10053F', '10055B', '10055F', '10057B', '10057F', '10058B', '10058F', '10059B', '10059F', '10060B', '10060F', '10061B', '10061F', '10062B', '10062F', '10063B', '10063F', '10064B', '10064F', '10066B', '10066F', '10070F', '10071B', '10072F', '10073B', '10073F', '10074B', '10074F', '10075F', '10076B', '10076F', '10077B'])
+2022-09-05 06:50:22.037 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 1.71583
+2022-09-05 06:50:22.059 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.000  AP@0.1: 0.001  AP@0.5: 0.000
+2022-09-05 06:50:22.059 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.000
+2022-09-05 06:50:22.060 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 11 s
+2022-09-05 06:50:22.072 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 2.33499
+2022-09-05 06:51:35.205 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 1.23410
+2022-09-05 06:51:35.223 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.007  AP@0.1: 0.015  AP@0.5: 0.000
+2022-09-05 06:51:35.224 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.000
+2022-09-05 06:51:35.225 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 11 s
+2022-09-05 06:51:35.236 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.46697
+2022-09-05 06:52:48.601 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 1.13379
+2022-09-05 06:52:48.620 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.007  AP@0.1: 0.026  AP@0.5: 0.000
+2022-09-05 06:52:48.621 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.000
+2022-09-05 06:52:48.622 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 11 s
+2022-09-05 06:52:48.633 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.19640
+2022-09-05 06:54:01.973 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 1.08054
+2022-09-05 06:54:01.991 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.032  AP@0.1: 0.042  AP@0.5: 0.023
+2022-09-05 06:54:01.992 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.053
+2022-09-05 06:54:01.993 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 11 s
+2022-09-05 06:54:02.004 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.13737
+2022-09-05 06:55:15.487 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 1.10684
+2022-09-05 06:55:15.506 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.019  AP@0.1: 0.031  AP@0.5: 0.000
+2022-09-05 06:55:15.506 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.067
+2022-09-05 06:55:15.507 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 11 s
+2022-09-05 06:55:15.518 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.07657
+2022-09-05 06:56:28.461 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 1.06928
+2022-09-05 06:56:28.479 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.035  AP@0.1: 0.046  AP@0.5: 0.014
+2022-09-05 06:56:28.479 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.027
+2022-09-05 06:56:28.481 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 11 s
+2022-09-05 06:56:28.491 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.06061
+2022-09-05 06:57:42.002 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.99424
+2022-09-05 06:57:42.020 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.037  AP@0.1: 0.046  AP@0.5: 0.029
+2022-09-05 06:57:42.020 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.092
+2022-09-05 06:57:42.021 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 11 s
+2022-09-05 06:57:42.032 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.02094
+2022-09-05 07:13:01.712 | INFO     | scripts.train:_train:212 - Log file at /opt/models/Task019FG_ADAM/RetinaUNetV001_D3V001_3d/fold0/train.log
+2022-09-05 07:13:01.713 | ERROR    | nndet.utils.info:log_git:219 - Was not able to read git information, trying to continue without.
+2022-09-05 07:13:02.154 | INFO     | nndet.io.datamodule.base:do_split:89 - Using splits /opt/data/Task019FG_ADAM/preprocessed/splits_final.pkl with fold 0
+2022-09-05 07:13:02.155 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:362 - Architecture overwrites: {} Anchor overwrites: {}
+2022-09-05 07:13:02.155 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:364 - Building architecture according to plan of RetinaUNetV001
+2022-09-05 07:13:02.155 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:367 - Start channels: 32; head channels: 128; fpn channels: 128
+2022-09-05 07:13:02.155 | INFO     | nndet.core.boxes.anchors:__init__:529 - Discarding anchor generator kwargs {'stride': 1}
+2022-09-05 07:13:02.156 | INFO     | nndet.ptmodule.retinaunet.base:_build_encoder:464 - Building:: encoder Encoder: {} 
+2022-09-05 07:13:02.228 | INFO     | nndet.ptmodule.retinaunet.base:_build_decoder:496 - Building:: decoder UFPNModular: {'min_out_channels': 8, 'upsampling_mode': 'transpose', 'num_lateral': 1, 'norm_lateral': False, 'activation_lateral': False, 'num_out': 1, 'norm_out': False, 'activation_out': False}
+2022-09-05 07:13:02.243 | INFO     | nndet.core.boxes.matcher:__init__:253 - Running ATSS Matching with num_candidates=4 and center_in_gt False.
+2022-09-05 07:13:02.244 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_classifier:530 - Building:: classifier BCECLassifier: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'mean', 'loss_weight': 1.0, 'prior_prob': 0.01}
+2022-09-05 07:13:02.249 | INFO     | nndet.arch.heads.classifier:init_weights:215 - Init classifier weights: prior prob 0.01
+2022-09-05 07:13:02.254 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_regressor:564 - Building:: regressor GIoURegressor: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'sum', 'loss_weight': 1.0, 'learn_scale': True}
+2022-09-05 07:13:02.262 | INFO     | nndet.arch.heads.regressor:build_scales:150 - Learning level specific scalar in regressor
+2022-09-05 07:13:02.263 | INFO     | nndet.arch.heads.regressor:init_weights:196 - Overwriting regressor conv weight init
+2022-09-05 07:13:02.270 | INFO     | nndet.ptmodule.retinaunet.base:_build_head:602 - Building:: head DetectionHeadHNMNative: {} sampler HardNegativeSamplerBatched: {'batch_size_per_image': 32, 'positive_fraction': 0.33, 'pool_size': 20, 'min_neg': 1}
+2022-09-05 07:13:02.270 | INFO     | nndet.core.boxes.sampler:__init__:235 - Sampling hard negatives on a per batch basis
+2022-09-05 07:13:02.270 | INFO     | nndet.ptmodule.retinaunet.base:_build_segmenter:638 - Building:: segmenter DiCESegmenterFgBg {'dice_kwargs': {'batch_dice': True}}
+2022-09-05 07:13:02.270 | INFO     | nndet.losses.segmentation:__init__:108 - Running batch dice True and do bg False in dice loss.
+2022-09-05 07:13:02.270 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:421 - Model Inference Summary: 
+detections_per_img: 100 
+score_thresh: 0 
+topk_candidates: 10000 
+remove_small_boxes: 0.01 
+nms_thresh: 0.6
+2022-09-05 07:13:02.271 | WARNING  | nndet.utils.info:wrapper:97 - This feature (FROCMetric.__init__) is experimental! It might not implement all features or is only a simplification!
+2022-09-05 07:13:02.317 | INFO     | scripts.train:_train:265 - Using 1 GPUs for training
+2022-09-05 07:13:02.317 | INFO     | scripts.train:_train:267 - Using None plugins for training
+2022-09-05 07:13:02.373 | INFO     | nndet.training.swa:__init__:64 - Initialize SWA with swa epoch start 4
+2022-09-05 07:13:02.424 | INFO     | nndet.io.datamodule.bg_module:setup:171 - Using dummy 2d augmentation params
+2022-09-05 07:13:02.425 | INFO     | nndet.io.augmentation.bg_aug:__init__:70 - Running dummy 2d augmentation transforms!
+2022-09-05 07:13:02.425 | INFO     | nndet.io.datamodule.bg_module:setup:190 - Augmentation: BaseMoreAug transforms and base_more params 
+2022-09-05 07:13:02.425 | INFO     | nndet.io.datamodule.bg_module:setup:192 - Loading network patch size [ 48 224 224] and generator patch size [48, 320, 320]
+2022-09-05 07:13:03.792 | INFO     | nndet.ptmodule.retinaunet.base:configure_optimizers:304 - Running: initial_lr 0.01 weight_decay 3e-05 SGD with momentum 0.9 and nesterov True
+2022-09-05 07:13:05.165 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:238 - Using validation DataLoader3DOffset with {}
+2022-09-05 07:13:05.166 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 07:13:05.167 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 07:13:05.168 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:262 - VALIDATION KEYS:
+ odict_keys(['10012', '10019', '10027', '10029', '10040', '10048B', '10049B', '10049F', '10054B', '10054F', '10056B', '10056F', '10068B', '10068F', '10069B', '10078B', '10078F'])
+2022-09-05 07:13:12.016 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 3.04835
+2022-09-05 07:13:12.033 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.000  AP@0.1: 0.000  AP@0.5: 0.000
+2022-09-05 07:13:12.034 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.010
+2022-09-05 07:13:12.039 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 6 s
+2022-09-05 07:13:12.042 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:203 - Using training DataLoader3DOffset with {}
+2022-09-05 07:13:12.043 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 07:13:12.046 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 07:13:12.046 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:227 - TRAINING KEYS:
+ odict_keys(['10016', '10018', '10023', '10025', '10026', '10028', '10030', '10031', '10032', '10033', '10034', '10035', '10036', '10037', '10038', '10039', '10041', '10042', '10043', '10044B', '10044F', '10045B', '10045F', '10046B', '10046F', '10050B', '10050F', '10051B', '10051F', '10052B', '10052F', '10053B', '10053F', '10055B', '10055F', '10057B', '10057F', '10058B', '10058F', '10059B', '10059F', '10060B', '10060F', '10061B', '10061F', '10062B', '10062F', '10063B', '10063F', '10064B', '10064F', '10066B', '10066F', '10070F', '10071B', '10072F', '10073B', '10073F', '10074B', '10074F', '10075F', '10076B', '10076F', '10077B'])
+2022-09-05 07:13:18.137 | WARNING  | nndet.training.learning_rate:linear_warm_up:46 - WarmUp was stepped too often, 5 but only 5 were expected!
+2022-09-05 07:13:18.138 | WARNING  | nndet.training.learning_rate:linear_warm_up:46 - WarmUp was stepped too often, 5 but only 5 were expected!
+2022-09-05 07:14:27.414 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 1.25396
+2022-09-05 07:14:27.433 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.021  AP@0.1: 0.023  AP@0.5: 0.020
+2022-09-05 07:14:27.434 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.004
+2022-09-05 07:14:27.435 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 11 s
+2022-09-05 07:14:27.446 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.93109
+2022-09-05 07:15:40.099 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 1.04716
+2022-09-05 07:15:40.118 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.001  AP@0.1: 0.003  AP@0.5: 0.000
+2022-09-05 07:15:40.118 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.056
+2022-09-05 07:15:40.119 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:15:40.130 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.14687
+2022-09-05 07:16:52.902 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.98416
+2022-09-05 07:16:52.922 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.004  AP@0.1: 0.015  AP@0.5: 0.000
+2022-09-05 07:16:52.922 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.199
+2022-09-05 07:16:52.924 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 11 s
+2022-09-05 07:16:52.934 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.04156
+2022-09-05 07:18:05.644 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.98394
+2022-09-05 07:18:05.664 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.006  AP@0.1: 0.019  AP@0.5: 0.000
+2022-09-05 07:18:05.664 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.226
+2022-09-05 07:18:05.665 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:18:05.676 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.02314
+2022-09-05 07:19:18.426 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.95902
+2022-09-05 07:19:18.446 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.005  AP@0.1: 0.013  AP@0.5: 0.000
+2022-09-05 07:19:18.446 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.141
+2022-09-05 07:19:18.448 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:19:18.458 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.95381
+2022-09-05 07:20:31.710 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.93498
+2022-09-05 07:20:31.730 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.004  AP@0.1: 0.015  AP@0.5: 0.002
+2022-09-05 07:20:31.730 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.132
+2022-09-05 07:20:31.732 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:20:31.744 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.95439
+2022-09-05 07:21:44.647 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.94447
+2022-09-05 07:21:44.666 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.031  AP@0.1: 0.039  AP@0.5: 0.003
+2022-09-05 07:21:44.666 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.188
+2022-09-05 07:21:44.667 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:21:44.678 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.94713
+2022-09-05 07:22:57.611 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.97327
+2022-09-05 07:22:57.629 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.027  AP@0.1: 0.032  AP@0.5: 0.021
+2022-09-05 07:22:57.630 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.080
+2022-09-05 07:22:57.631 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:22:57.642 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.95507
+2022-09-05 07:24:10.336 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.91920
+2022-09-05 07:24:10.355 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.023  AP@0.1: 0.031  AP@0.5: 0.007
+2022-09-05 07:24:10.355 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.129
+2022-09-05 07:24:10.356 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:24:10.367 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.94945
+2022-09-05 07:25:23.334 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.93768
+2022-09-05 07:25:23.353 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.004  AP@0.1: 0.012  AP@0.5: 0.001
+2022-09-05 07:25:23.353 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.155
+2022-09-05 07:25:23.354 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:25:23.365 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.95833
+2022-09-05 07:26:36.363 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.95169
+2022-09-05 07:26:36.382 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.033  AP@0.1: 0.038  AP@0.5: 0.026
+2022-09-05 07:26:36.382 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.132
+2022-09-05 07:26:36.383 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:26:36.394 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.95151
+2022-09-05 07:27:49.916 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.96206
+2022-09-05 07:27:49.934 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.027  AP@0.1: 0.040  AP@0.5: 0.013
+2022-09-05 07:27:49.934 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.121
+2022-09-05 07:27:49.936 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:27:49.947 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.92747
+2022-09-05 07:29:02.673 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.92484
+2022-09-05 07:29:02.691 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.016  AP@0.1: 0.027  AP@0.5: 0.010
+2022-09-05 07:29:02.692 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.170
+2022-09-05 07:29:02.693 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:29:02.704 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.92366
+2022-09-05 07:30:16.207 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.90498
+2022-09-05 07:30:16.227 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.023  AP@0.1: 0.026  AP@0.5: 0.020
+2022-09-05 07:30:16.227 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.173
+2022-09-05 07:30:16.229 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 10 s
+2022-09-05 07:30:16.239 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.93346
+2022-09-05 07:31:29.366 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.90139
+2022-09-05 07:31:29.385 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.030  AP@0.1: 0.036  AP@0.5: 0.024
+2022-09-05 07:31:29.386 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.168
+2022-09-05 07:31:29.387 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 11 s
+2022-09-05 07:31:29.398 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.92952
+2022-09-05 08:27:01.406 | INFO     | scripts.train:_train:212 - Log file at /opt/models/Task019FG_ADAM/RetinaUNetV001_D3V001_3d/fold0/train.log
+2022-09-05 08:27:01.407 | ERROR    | nndet.utils.info:log_git:219 - Was not able to read git information, trying to continue without.
+2022-09-05 08:27:01.897 | INFO     | nndet.io.datamodule.base:do_split:89 - Using splits /opt/data/Task019FG_ADAM/preprocessed/splits_final.pkl with fold 0
+2022-09-05 08:27:01.898 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:362 - Architecture overwrites: {} Anchor overwrites: {}
+2022-09-05 08:27:01.898 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:364 - Building architecture according to plan of RetinaUNetV001
+2022-09-05 08:27:01.898 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:367 - Start channels: 32; head channels: 128; fpn channels: 128
+2022-09-05 08:27:01.899 | INFO     | nndet.core.boxes.anchors:__init__:529 - Discarding anchor generator kwargs {'stride': 1}
+2022-09-05 08:27:01.899 | INFO     | nndet.ptmodule.retinaunet.base:_build_encoder:464 - Building:: encoder Encoder: {} 
+2022-09-05 08:27:01.973 | INFO     | nndet.ptmodule.retinaunet.base:_build_decoder:496 - Building:: decoder UFPNModular: {'min_out_channels': 8, 'upsampling_mode': 'transpose', 'num_lateral': 1, 'norm_lateral': False, 'activation_lateral': False, 'num_out': 1, 'norm_out': False, 'activation_out': False}
+2022-09-05 08:27:01.988 | INFO     | nndet.core.boxes.matcher:__init__:253 - Running ATSS Matching with num_candidates=4 and center_in_gt False.
+2022-09-05 08:27:01.988 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_classifier:530 - Building:: classifier BCECLassifier: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'mean', 'loss_weight': 1.0, 'prior_prob': 0.01}
+2022-09-05 08:27:01.994 | INFO     | nndet.arch.heads.classifier:init_weights:215 - Init classifier weights: prior prob 0.01
+2022-09-05 08:27:01.999 | INFO     | nndet.ptmodule.retinaunet.base:_build_head_regressor:564 - Building:: regressor GIoURegressor: {'num_convs': 1, 'norm_channels_per_group': 16, 'norm_affine': True, 'reduction': 'sum', 'loss_weight': 1.0, 'learn_scale': True}
+2022-09-05 08:27:02.007 | INFO     | nndet.arch.heads.regressor:build_scales:150 - Learning level specific scalar in regressor
+2022-09-05 08:27:02.008 | INFO     | nndet.arch.heads.regressor:init_weights:196 - Overwriting regressor conv weight init
+2022-09-05 08:27:02.015 | INFO     | nndet.ptmodule.retinaunet.base:_build_head:602 - Building:: head DetectionHeadHNMNative: {} sampler HardNegativeSamplerBatched: {'batch_size_per_image': 32, 'positive_fraction': 0.33, 'pool_size': 20, 'min_neg': 1}
+2022-09-05 08:27:02.015 | INFO     | nndet.core.boxes.sampler:__init__:235 - Sampling hard negatives on a per batch basis
+2022-09-05 08:27:02.015 | INFO     | nndet.ptmodule.retinaunet.base:_build_segmenter:638 - Building:: segmenter DiCESegmenterFgBg {'dice_kwargs': {'batch_dice': True}}
+2022-09-05 08:27:02.016 | INFO     | nndet.losses.segmentation:__init__:108 - Running batch dice True and do bg False in dice loss.
+2022-09-05 08:27:02.016 | INFO     | nndet.ptmodule.retinaunet.base:from_config_plan:421 - Model Inference Summary: 
+detections_per_img: 100 
+score_thresh: 0 
+topk_candidates: 10000 
+remove_small_boxes: 0.01 
+nms_thresh: 0.6
+2022-09-05 08:27:02.016 | WARNING  | nndet.utils.info:wrapper:97 - This feature (FROCMetric.__init__) is experimental! It might not implement all features or is only a simplification!
+2022-09-05 08:27:02.066 | INFO     | scripts.train:_train:265 - Using 1 GPUs for training
+2022-09-05 08:27:02.066 | INFO     | scripts.train:_train:267 - Using None plugins for training
+2022-09-05 08:27:02.123 | INFO     | nndet.training.swa:__init__:64 - Initialize SWA with swa epoch start 19
+2022-09-05 08:27:02.175 | INFO     | nndet.io.datamodule.bg_module:setup:171 - Using dummy 2d augmentation params
+2022-09-05 08:27:02.176 | INFO     | nndet.io.augmentation.bg_aug:__init__:70 - Running dummy 2d augmentation transforms!
+2022-09-05 08:27:02.176 | INFO     | nndet.io.datamodule.bg_module:setup:190 - Augmentation: BaseMoreAug transforms and base_more params 
+2022-09-05 08:27:02.176 | INFO     | nndet.io.datamodule.bg_module:setup:192 - Loading network patch size [ 48 224 224] and generator patch size [48, 320, 320]
+2022-09-05 08:27:03.460 | INFO     | nndet.ptmodule.retinaunet.base:configure_optimizers:304 - Running: initial_lr 0.01 weight_decay 3e-05 SGD with momentum 0.9 and nesterov True
+2022-09-05 08:27:04.839 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:238 - Using validation DataLoader3DOffset with {}
+2022-09-05 08:27:04.840 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 08:27:04.842 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 08:27:04.842 | INFO     | nndet.io.datamodule.bg_module:val_dataloader:262 - VALIDATION KEYS:
+ odict_keys(['10012', '10019', '10027', '10029', '10040', '10048B', '10049B', '10049F', '10054B', '10054F', '10056B', '10056F', '10068B', '10068F', '10069B', '10078B', '10078F'])
+2022-09-05 08:27:11.714 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 2.96259
+2022-09-05 08:27:11.731 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.000  AP@0.1: 0.000  AP@0.5: 0.000
+2022-09-05 08:27:11.731 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.018
+2022-09-05 08:27:11.736 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 6 s
+2022-09-05 08:27:11.740 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:203 - Using training DataLoader3DOffset with {}
+2022-09-05 08:27:11.741 | INFO     | nndet.io.datamodule.bg_loader:build_cache:146 - Building Sampling Cache for Dataloder
+2022-09-05 08:27:11.743 | INFO     | nndet.io.datamodule.bg_module:get_augmenter:55 - Using 5 num_processes and 2 num_cached_per_queue for augmentation.
+2022-09-05 08:27:11.744 | INFO     | nndet.io.datamodule.bg_module:train_dataloader:227 - TRAINING KEYS:
+ odict_keys(['10016', '10018', '10023', '10025', '10026', '10028', '10030', '10031', '10032', '10033', '10034', '10035', '10036', '10037', '10038', '10039', '10041', '10042', '10043', '10044B', '10044F', '10045B', '10045F', '10046B', '10046F', '10050B', '10050F', '10051B', '10051F', '10052B', '10052F', '10053B', '10053F', '10055B', '10055F', '10057B', '10057F', '10058B', '10058F', '10059B', '10059F', '10060B', '10060F', '10061B', '10061F', '10062B', '10062F', '10063B', '10063F', '10064B', '10064F', '10066B', '10066F', '10070F', '10071B', '10072F', '10073B', '10073F', '10074B', '10074F', '10075F', '10076B', '10076F', '10077B'])
+2022-09-05 08:38:23.904 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.96613
+2022-09-05 08:38:23.988 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.060  AP@0.1: 0.069  AP@0.5: 0.038
+2022-09-05 08:38:23.988 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.124
+2022-09-05 08:38:23.990 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 55 s
+2022-09-05 08:38:24.013 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 1.21973
+2022-09-05 08:49:37.248 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.82808
+2022-09-05 08:49:37.329 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.092  AP@0.1: 0.106  AP@0.5: 0.064
+2022-09-05 08:49:37.330 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.283
+2022-09-05 08:49:37.332 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 08:49:37.354 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.88468
+2022-09-05 09:00:51.085 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.85753
+2022-09-05 09:00:51.167 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.116  AP@0.1: 0.148  AP@0.5: 0.071
+2022-09-05 09:00:51.167 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.017
+2022-09-05 09:00:51.169 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 09:00:51.191 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.78670
+2022-09-05 09:11:11.016 | WARNING  | nndet.training.learning_rate:linear_warm_up:46 - WarmUp was stepped too often, 4000 but only 4000 were expected!
+2022-09-05 09:11:11.017 | WARNING  | nndet.training.learning_rate:linear_warm_up:46 - WarmUp was stepped too often, 4000 but only 4000 were expected!
+2022-09-05 09:12:06.005 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.82384
+2022-09-05 09:12:06.084 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.188  AP@0.1: 0.246  AP@0.5: 0.084
+2022-09-05 09:12:06.085 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.061
+2022-09-05 09:12:06.086 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 09:12:06.108 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.69853
+2022-09-05 09:23:19.493 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.80189
+2022-09-05 09:23:19.569 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.253  AP@0.1: 0.328  AP@0.5: 0.146
+2022-09-05 09:23:19.570 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.007
+2022-09-05 09:23:19.571 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 09:23:19.593 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.58058
+2022-09-05 09:34:31.108 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.55436
+2022-09-05 09:34:31.185 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.337  AP@0.1: 0.446  AP@0.5: 0.190
+2022-09-05 09:34:31.186 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.656
+2022-09-05 09:34:31.187 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 09:34:31.209 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.43388
+2022-09-05 09:45:43.749 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.59050
+2022-09-05 09:45:43.826 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.367  AP@0.1: 0.478  AP@0.5: 0.216
+2022-09-05 09:45:43.827 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.692
+2022-09-05 09:45:43.828 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 09:45:43.850 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.36164
+2022-09-05 09:56:56.877 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.41554
+2022-09-05 09:56:56.954 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.436  AP@0.1: 0.546  AP@0.5: 0.291
+2022-09-05 09:56:56.954 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.787
+2022-09-05 09:56:56.956 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 09:56:56.978 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.21098
+2022-09-05 10:08:10.987 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.51933
+2022-09-05 10:08:11.065 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.382  AP@0.1: 0.473  AP@0.5: 0.215
+2022-09-05 10:08:11.065 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.757
+2022-09-05 10:08:11.067 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 10:08:11.089 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.12480
+2022-09-05 10:19:24.538 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.60588
+2022-09-05 10:19:24.613 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.326  AP@0.1: 0.422  AP@0.5: 0.163
+2022-09-05 10:19:24.614 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.725
+2022-09-05 10:19:24.616 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 10:19:24.637 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.06555
+2022-09-05 10:30:38.807 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.51943
+2022-09-05 10:30:38.882 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.400  AP@0.1: 0.515  AP@0.5: 0.206
+2022-09-05 10:30:38.883 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.810
+2022-09-05 10:30:38.884 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 10:30:38.906 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: 0.01249
+2022-09-05 10:41:51.788 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.50829
+2022-09-05 10:41:51.865 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.423  AP@0.1: 0.521  AP@0.5: 0.233
+2022-09-05 10:41:51.866 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.754
+2022-09-05 10:41:51.867 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 10:41:51.889 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.03939
+2022-09-05 10:53:03.314 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.54846
+2022-09-05 10:53:03.390 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.412  AP@0.1: 0.527  AP@0.5: 0.184
+2022-09-05 10:53:03.391 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.745
+2022-09-05 10:53:03.392 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 10:53:03.414 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.09204
+2022-09-05 11:04:16.539 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.46285
+2022-09-05 11:04:16.617 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.464  AP@0.1: 0.591  AP@0.5: 0.229
+2022-09-05 11:04:16.618 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.786
+2022-09-05 11:04:16.619 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 53 s
+2022-09-05 11:04:16.641 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.13054
+2022-09-05 11:15:29.375 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.54227
+2022-09-05 11:15:29.451 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.454  AP@0.1: 0.551  AP@0.5: 0.258
+2022-09-05 11:15:29.452 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.712
+2022-09-05 11:15:29.453 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 11:15:29.475 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.15304
+2022-09-05 11:26:43.112 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.46356
+2022-09-05 11:26:43.187 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.485  AP@0.1: 0.626  AP@0.5: 0.243
+2022-09-05 11:26:43.188 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.782
+2022-09-05 11:26:43.189 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 11:26:43.210 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.18312
+2022-09-05 11:37:56.416 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.52965
+2022-09-05 11:37:56.493 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.446  AP@0.1: 0.575  AP@0.5: 0.237
+2022-09-05 11:37:56.494 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.770
+2022-09-05 11:37:56.495 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 11:37:56.517 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.22346
+2022-09-05 11:49:08.931 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.53529
+2022-09-05 11:49:09.006 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.480  AP@0.1: 0.626  AP@0.5: 0.221
+2022-09-05 11:49:09.007 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.757
+2022-09-05 11:49:09.009 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 53 s
+2022-09-05 11:49:09.030 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.25787
+2022-09-05 12:00:21.067 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.57735
+2022-09-05 12:00:21.142 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.496  AP@0.1: 0.603  AP@0.5: 0.254
+2022-09-05 12:00:21.143 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.795
+2022-09-05 12:00:21.144 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 12:00:21.166 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.27998
+2022-09-05 12:11:33.363 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.55697
+2022-09-05 12:11:33.442 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.437  AP@0.1: 0.591  AP@0.5: 0.185
+2022-09-05 12:11:33.443 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.769
+2022-09-05 12:11:33.444 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 53 s
+2022-09-05 12:11:33.466 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.30507
+2022-09-05 12:22:45.780 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.56621
+2022-09-05 12:22:45.855 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.439  AP@0.1: 0.573  AP@0.5: 0.207
+2022-09-05 12:22:45.856 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.813
+2022-09-05 12:22:45.857 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 53 s
+2022-09-05 12:22:45.879 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.30864
+2022-09-05 12:33:58.537 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.57027
+2022-09-05 12:33:58.612 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.483  AP@0.1: 0.623  AP@0.5: 0.215
+2022-09-05 12:33:58.613 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.777
+2022-09-05 12:33:58.615 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 53 s
+2022-09-05 12:33:58.636 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.32375
+2022-09-05 12:45:10.577 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.56557
+2022-09-05 12:45:10.653 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.447  AP@0.1: 0.569  AP@0.5: 0.212
+2022-09-05 12:45:10.653 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.789
+2022-09-05 12:45:10.655 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 53 s
+2022-09-05 12:45:10.677 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.31654
+2022-09-05 12:56:23.270 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.56913
+2022-09-05 12:56:23.345 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.478  AP@0.1: 0.625  AP@0.5: 0.207
+2022-09-05 12:56:23.346 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.792
+2022-09-05 12:56:23.347 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 12:56:23.369 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.32708
+2022-09-05 13:07:35.990 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.53724
+2022-09-05 13:07:36.066 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.490  AP@0.1: 0.622  AP@0.5: 0.232
+2022-09-05 13:07:36.067 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.772
+2022-09-05 13:07:36.068 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 53 s
+2022-09-05 13:07:36.090 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.32219
+2022-09-05 13:18:47.880 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.65527
+2022-09-05 13:18:47.956 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.460  AP@0.1: 0.593  AP@0.5: 0.186
+2022-09-05 13:18:47.957 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.791
+2022-09-05 13:18:47.958 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 13:18:47.980 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.33624
+2022-09-05 13:29:59.212 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.58182
+2022-09-05 13:29:59.286 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.489  AP@0.1: 0.607  AP@0.5: 0.239
+2022-09-05 13:29:59.286 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.796
+2022-09-05 13:29:59.288 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 53 s
+2022-09-05 13:29:59.309 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.34325
+2022-09-05 13:41:11.472 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.61966
+2022-09-05 13:41:11.549 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.467  AP@0.1: 0.600  AP@0.5: 0.208
+2022-09-05 13:41:11.550 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.800
+2022-09-05 13:41:11.552 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 13:41:11.573 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.34622
+2022-09-05 13:52:23.640 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.65693
+2022-09-05 13:52:23.716 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.437  AP@0.1: 0.598  AP@0.5: 0.178
+2022-09-05 13:52:23.716 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.769
+2022-09-05 13:52:23.718 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 13:52:23.753 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.34687
+2022-09-05 14:03:37.906 | INFO     | nndet.ptmodule.retinaunet.base:validation_epoch_end:269 - Val loss reached: 0.56970
+2022-09-05 14:03:37.983 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:284 - mAP@0.1:0.5:0.05: 0.490  AP@0.1: 0.626  AP@0.5: 0.204
+2022-09-05 14:03:37.983 | INFO     | nndet.ptmodule.retinaunet.base:evaluation_end:292 - Proxy FG Dice: 0.782
+2022-09-05 14:03:37.985 | INFO     | nndet.ptmodule.base_module:validation_epoch_end:88 - This epoch took 54 s
+2022-09-05 14:03:38.007 | INFO     | nndet.ptmodule.retinaunet.base:training_epoch_end:252 - Train loss reached: -0.34956
